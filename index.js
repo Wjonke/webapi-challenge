@@ -62,7 +62,7 @@ server.get('/', (req, res) => {
 server.get("/chores", (req, res) => {
   Chores.get()
     .then(chores => {
-      res.status(200).json(chores);
+      res.status(200).json([chores]);
     })
     .catch(error => {
       res.status(500).json({ message: "Could not get all chores" });
