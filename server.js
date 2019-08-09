@@ -47,12 +47,12 @@ server.get("/chores", (req, res) => {
 
   if (req.query.completed === "true") {
     let completedChores = Chores.filter(chore => chore.completed === true);
-
     res.status(200).json(completedChores);
+
   } else if (req.query.completed === "false") {
     let unCompletedChores = Chores.filter(chore => chore.completed !== true);
-
     res.status(200).json(unCompletedChores);
+
   } else {
     res.status(200).json(Chores);
   }
@@ -60,13 +60,27 @@ server.get("/chores", (req, res) => {
 
 
 
-// //create a chore//
-// server.post("/chores", validateChore, (req, res) => {
-//   const choreInfo = req.body;
-//   choreId = choreId++;
-//   Chores.push(choreInfo)
-//   res.status(200).json(chore);
-// });
+// //create a chore and add to a specific persons list//
+server.post("/chores/:id", (req, res) => {
+  const personId = Number(req.params.id); //changes string to number
+  const newChoreInfo = req.body;
+  newChoreInfo.id = Chores.length + 1;//increments id of previous chore
+  newChoreInfo.assignedTo = personId//assigns assignedTo id of person
+
+  if(newChoreInfo.description) {
+
+    if (!newChoreInfo.hasOwnProperty("completed")) {
+      newChoreInfo.completed = false;
+      Chores.push(newChoreInfo);
+      res.status(201).json(newChoreInfo);
+    }
+
+  } else{
+    res.status(400).json({ message: "You must add description" });
+  }
+
+  
+});
     
     
 // //DELETE a chore 
