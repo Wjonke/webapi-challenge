@@ -85,12 +85,12 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
       if a person with that `id` does not exist in the **people** array, the endpoint should return a `404` status code and a message. 
       If the person exists, but has no **chores** assigned, return an empty array.
 
-- [ ] Add support for a `query string parameter` called _completed_ to the endpoint that returns the list of chores. 
+- [x] Add support for a `query string parameter` called _completed_ to the endpoint that returns the list of chores. 
       When the client sends this query string parameter, and the value is `true`, the endpoint should return the list of completed chores. 
       If the value of the query string parameter is `false`, the endpoint should return chores where completed is `false`. 
       If the query string parameter is not sent, the endpoint should return all chores.
 
-- [ ] Deploy the API to _heroku_ and send the URL to your TL.
+- [x] Deploy the API to _heroku_ and send the URL to your TL.
 
 
 

@@ -99,17 +99,22 @@ server.delete("/chores/:id", (req, res) => {
 
 
 // //UPDATE a chore 
-// server.put("/chores/:id", validateChoreId, validateChore, (req, res) => {
-//   const choreId = req.params.id;
-//   const changes = req.body;
-//   Chores.update(choreId, changes)
-//     .then(updated => {
-//       res.status(200).json(updated);
-//     })
-//     .catch(error => {
-//       res.status(500).json({ message: "error posting" });
-//     });
-// });
+server.put("/chores/:id", (req, res) => {
+  const choreId = Number(req.params.id);
+  const changes = req.body;
+  
+  Chores= Chores.map(chore => {
+    if (chore.id === choreId) {
+      chore = changes;
+      chore.id = choreId;
+      return chore;
+    }else {
+      return chore;
+    }
+  });
+  let changedChore = Chores.filter(chore=> chore.id === choreId);
+  res.status(200).json(changedChore);
+});
 
 
 module.exports = server;
