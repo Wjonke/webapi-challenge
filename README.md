@@ -34,29 +34,68 @@ Follow these steps for completing your project.
 
 Commit your code regularly and use descriptive messages. This helps both you (in case you ever need to return to old code for any number of reasons and your Team Lead).
 
+
+
+
+
+
 ## Self-Study/Essay Questions
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+
+
+
 - [ ] What is Express Middleware?
+
+
+
 
 - [ ] How can a client send data to an API?
 
+
+
+
 - [ ] What can the API return to help clients know if a request was successful?
+
+
+
 
 - [ ] What Express feature can we use to partition an application into sub-applications?
 
+
+
+
+
+
+
+
 ## Minimum Viable Product
 
-- [ ] Configure an _npm script_ named _"server"_ that will execute your code using _nodemon_. Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.
+- [ ] Configure an _npm script_ named _"server"_ that will execute your code using _nodemon_. 
+      Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.
+
 - [ ] Configure an _npm script_ named _"start"_ that will execute your code using _node_.
+
 - [ ] Write endpoints to manage (CRUD) **chores**.
+
 - [ ] Hard code an array with a few **people**. No need to write endpoints to manage them.
-- [ ] Write an endpoint that accepts a person's `id` and returns the list of **chores** for the person. if a person with that `id` does not exist in the **people** array, the endpoint should return a `404` status code and a message. If the person exists, but has no **chores** assigned, return an empty array.
-- [ ] Add support for a `query string parameter` called _completed_ to the endpoint that returns the list of chores. When the client sends this query string parameter, and the value is `true`, the endpoint should return the list of completed chores. If the value of the query string parameter is `false`, the endpoint should return chores where completed is `false`. If the query string parameter is not sent, the endpoint should return all chores.
+
+- [ ] Write an endpoint that accepts a person's `id` and returns the list of **chores** for the person. 
+      if a person with that `id` does not exist in the **people** array, the endpoint should return a `404` status code and a message. 
+      If the person exists, but has no **chores** assigned, return an empty array.
+
+- [ ] Add support for a `query string parameter` called _completed_ to the endpoint that returns the list of chores. 
+      When the client sends this query string parameter, and the value is `true`, the endpoint should return the list of completed chores. 
+      If the value of the query string parameter is `false`, the endpoint should return chores where completed is `false`. 
+      If the query string parameter is not sent, the endpoint should return all chores.
+
 - [ ] Deploy the API to _heroku_ and send the URL to your TL.
+
+
+
 
 ### Resources (People and Chores)
 
@@ -80,6 +119,13 @@ For **chores** store the following information:
 | completed   | boolean   | used to indicate if the chore has been completed, if not provided by the client, make it `false` by default |
 
 When saving a chore, check that there is a person with an `id` that matches the number provided in this field. Example: if trying to save a chore and `assignedTo` has the value: 3, check that the **people** array has an object with an `id` that has the value: 3. If there is no person with that `id`, do NOT save the chore to the array and return a 400 status code with a message.
+
+
+
+
+
+
+
 
 ## Stretch Goal
 
@@ -108,7 +154,6 @@ When saving a chore, check that there is a person with an `id` that matches the 
   ]
 }
 ```
-
 - [ ] Use `create-react-app` to create an application in a separate folder (outside the API project folder). Name it anything you want.
 - [ ] From the React application show a list of **people** using the API you built.
 - [ ] Add functionality to show the details of a person, including its chores, when clicking a person name in the list. Use React Router to navigate to a separate route to show the person details.
