@@ -1,6 +1,5 @@
 const express = require('express');
-const Chores = require("./data/data");
-const People = require("./data/data");
+
 
 const port = process.env.PORT || 8000;
 
@@ -8,7 +7,14 @@ const server = express();
 
 server.use(express.json())
 
+let Chores =[]
 
+let People =[
+  { id:1, name: 'Frodo Baggins' },
+  { id:2, name: 'Samwise Gamgee' }, 
+  { id:3, name: 'Meriadoc Brandybuck' },
+  
+]
 ///////////custom middleware////////////
 
 function validateChoreId(req, res, next) {
