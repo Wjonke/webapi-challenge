@@ -14,6 +14,6 @@ server.get('/',  (req, res) => {
 server.use(express.json())
 
 //routes
-server.use("/", choreRouter)
+server.use("/chores", choreRouter)
 
 server.listen(port, ()=> console.log(` server running on ${port} `))
