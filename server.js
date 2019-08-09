@@ -59,8 +59,9 @@ server.get("/chores", (req, res) => {
 });
 
 
-
+////Tests Passed!////
 // //create a chore and add to a specific persons list//
+//if there is a description and its not completed, add new chore and set completed to false//
 server.post("/chores/:id", (req, res) => {
   const personId = Number(req.params.id); //changes string to number
   const newChoreInfo = req.body;
@@ -68,42 +69,32 @@ server.post("/chores/:id", (req, res) => {
   newChoreInfo.assignedTo = personId//assigns assignedTo id of person
 
   if(newChoreInfo.description) {
-
     if (!newChoreInfo.hasOwnProperty("completed")) {
       newChoreInfo.completed = false;
       Chores.push(newChoreInfo);
       res.status(201).json(newChoreInfo);
     }
-
   } else{
     res.status(400).json({ message: "You must add description" });
   }
-
-  
 });
     
-    
-// //DELETE a chore 
-// server.delete("/chores/:id", validateChoreId, (req, res) => {
-//   const choreId = req.params.id;
-//   let selectedchore;
+    //tests passed !
+//DELETE a chore by id
+server.delete("/chores/:id", (req, res) => {
+  const choreId = Number(req.params.id);
+  let selectedChore= Chores.filter(chore=> chore.id ===choreId)
 
-//   Chores.getById(choreId)
-//     .then(chore => {
-//       selectedchore = chore;
-//       Chores.remove(choreId)
-//         .then(selectedChore => {res.status(200).json(selectedchore);
-//         })
-//         .catch(error => {
-//           res
-//             .status(500)
-//             .json({ message: "Could not delete chore using that ID" });
-//         });
-//     })
-//     .catch(error => {
-//       res.status(500).json({ message: "Things went wrong!" });
-//     });
-// });
+  //sets chroes array to chores that weren't deleted
+  Chores= Chores.filter(chore=>{
+    if (chore.id !== choreId) {
+      return chore;
+    }
+
+  })
+
+  res.status(200).json(selectedChore)
+});
 
 
 
@@ -117,18 +108,6 @@ server.post("/chores/:id", (req, res) => {
 //     })
 //     .catch(error => {
 //       res.status(500).json({ message: "error posting" });
-//     });
-// });
-
-// //find all chores of person by ID
-// server.get('/:id/chores', validatePerson,  (req, res) => {
-//   const ID = req.params.id;
-//   People.getUserChores(ID)
-//     .then(chores => {
-//       res.status(200).json(chores);
-//     })
-//     .catch(error => {
-//       res.status(500).json({ message: "Users chores could not be retrieved" });
 //     });
 // });
 
