@@ -1,4 +1,4 @@
-exports.Chores =[{ id:1, description: 'test chore' }]
+exports.Chores =[]
 
 exports.People =[
   { id:1, name: 'Frodo Baggins' },

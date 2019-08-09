@@ -54,7 +54,7 @@ const validatePerson = (req, res, next) => {
 //   res.status(200).json({ message: 'hello from Node'})
 // })
 //GET all chores
-router.get("/", (req, res) => {
+router.get("/chores", (req, res) => {
   Chores.get()
     .then(chores => {
       res.status(200).json(chores);
@@ -67,7 +67,7 @@ router.get("/", (req, res) => {
 
 
 //create a user's chore//
-router.post("/:id", validateChore, (req, res) => {
+router.post("/chores/:id", validateChore, (req, res) => {
   const choreInfo = req.body;
   choreInfo.id = req.params.id;
   
@@ -82,7 +82,7 @@ router.post("/:id", validateChore, (req, res) => {
 
 
 //DELETE chore using its ID, return deleted chore
-router.delete("/:id", validateChoreId, (req, res) => {
+router.delete("/chores/:id", validateChoreId, (req, res) => {
   const choreId = req.params.id;
   let selectedchore;
 
@@ -106,7 +106,7 @@ router.delete("/:id", validateChoreId, (req, res) => {
 
 
 //UPDATE chore using its ID and supplying changes in body
-router.put("/:id", validateChoreId, validateChore, (req, res) => {
+router.put("/chores/:id", validateChoreId, validateChore, (req, res) => {
   const choreId = req.params.id;
   const changes = req.body;
   Chores.update(choreId, changes)
