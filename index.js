@@ -6,7 +6,7 @@ const port = process.env.PORT || 8000;
 const server = express();
 
 
-server.get('/',  (req, res) => {
+server.get('/api',  (req, res) => {
   res.send(`<h2>Deployed</h2>`)
 });
 
@@ -14,6 +14,6 @@ server.get('/',  (req, res) => {
 server.use(express.json())
 
 //routes
-server.use("/chores", choreRouter)
+server.use("/api", choreRouter)
 
 server.listen(port, ()=> console.log(` server running on ${port} `))
