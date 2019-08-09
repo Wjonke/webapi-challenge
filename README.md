@@ -43,30 +43,28 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
-- [ ] Mention two parts of Express that you learned about this week.
+- [x] Mention two parts of Express that you learned about this week.
 
-
+    server-side routing, middleware
 
 
 - [ ] What is Express Middleware?
 
-
+  small functions we write for validating and logging etc, reusable function that can be passed into our routes
 
 
 - [ ] How can a client send data to an API?
 
-
+  with crud operations
 
 
 - [ ] What can the API return to help clients know if a request was successful?
 
-
+  http status codes
 
 
 - [ ] What Express feature can we use to partition an application into sub-applications?
-
-
-
+    express sub app
 
 
 
