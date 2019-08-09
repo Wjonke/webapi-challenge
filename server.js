@@ -41,17 +41,20 @@ let People =[
 
 //////////////////ROUTES//////////////
 
-
+//tests passed
 //GET all chores with added Query to check if completed
 server.get("/chores", (req, res) => {
+
   if (req.query.completed === "true") {
-    let completedChores = chores.filter(chore => chore.completed === true);
+    let completedChores = Chores.filter(chore => chore.completed === true);
+
     res.status(200).json(completedChores);
   } else if (req.query.completed === "false") {
-    let unCompletedChores = chores.filter(chore => chore.completed !== true);
+    let unCompletedChores = Chores.filter(chore => chore.completed !== true);
+
     res.status(200).json(unCompletedChores);
   } else {
-    res.status(200).json(chores);
+    res.status(200).json(Chores);
   }
 });
 
