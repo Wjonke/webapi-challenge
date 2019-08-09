@@ -1,6 +1,6 @@
 const express = require('express')
 
-const router = express.Router();
+const server = express.Router();
 const Chores = require("../data/data");
 const People = require("../data/data");
 
@@ -50,11 +50,11 @@ const validatePerson = (req, res, next) => {
   next()
 }
 //////////////////ROUTES//////////////
-router.get('/', (req, res) => {
+server.get('/', (req, res) => {
   res.status(200).json({ message: 'hello from Node'})
 })
 //GET all chores
-router.get("/chores", (req, res) => {
+server.get("/chores", (req, res) => {
   Chores.get()
     .then(chores => {
       res.status(200).json(chores);
@@ -67,7 +67,7 @@ router.get("/chores", (req, res) => {
 
 
 //create a user's chore//
-router.post("/chores/:id", validateChore, (req, res) => {
+server.post("/chores/:id", validateChore, (req, res) => {
   const choreInfo = req.body;
   choreInfo.id = req.params.id;
   
@@ -82,7 +82,7 @@ router.post("/chores/:id", validateChore, (req, res) => {
 
 
 //DELETE chore using its ID, return deleted chore
-router.delete("/chores/:id", validateChoreId, (req, res) => {
+server.delete("/chores/:id", validateChoreId, (req, res) => {
   const choreId = req.params.id;
   let selectedchore;
 
@@ -106,7 +106,7 @@ router.delete("/chores/:id", validateChoreId, (req, res) => {
 
 
 //UPDATE chore using its ID and supplying changes in body
-router.put("/chores/:id", validateChoreId, validateChore, (req, res) => {
+server.put("/chores/:id", validateChoreId, validateChore, (req, res) => {
   const choreId = req.params.id;
   const changes = req.body;
   Chores.update(choreId, changes)
@@ -119,7 +119,7 @@ router.put("/chores/:id", validateChoreId, validateChore, (req, res) => {
 });
 
 //find chores of person by ID
-router.get('/:id/chores', validatePerson,  (req, res) => {
+server.get('/:id/chores', validatePerson,  (req, res) => {
   const ID = req.params.id;
   People.getUserChores(ID)
     .then(chores => {
@@ -131,4 +131,4 @@ router.get('/:id/chores', validatePerson,  (req, res) => {
 });
 
 
-module.exports = router;
+module.exports = server;
