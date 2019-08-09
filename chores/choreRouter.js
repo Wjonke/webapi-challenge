@@ -50,9 +50,9 @@ const validatePerson = (req, res, next) => {
   next()
 }
 //////////////////ROUTES//////////////
-router.get('/', (req, res) => {
-  res.status(200).json({ message: 'hello from Node'})
-})
+// router.get('/', (req, res) => {
+//   res.status(200).json({ message: 'hello from Node'})
+// })
 //GET all chores
 router.get("/", (req, res) => {
   Chores.get()
