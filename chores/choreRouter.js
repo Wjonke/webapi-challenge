@@ -2,6 +2,7 @@ const express = require('express')
 
 const router = express.Router();
 const Chores = require("../data/data");
+const People = require("../data/data");
 
 
 ///////////custom middleware////////////
@@ -37,6 +38,17 @@ const validateChore = (req, res, next) => {
   next()
 }
 
+
+const validatePerson = (req, res, next) => {
+ 
+  if(!req.body || req.body === {}){
+    res.status(400).send({message: "missing data"})
+  }
+  if(!req.body.id){
+    res.status(400).send({message: "no such person"})
+  }
+  next()
+}
 //////////////////ROUTES//////////////
 
 //GET all chores
@@ -104,6 +116,17 @@ router.put("/chores/:id", validateChoreId, validateChore, (req, res) => {
     });
 });
 
+//find chores of person by ID
+router.get('/:id/chores', validatePerson,  (req, res) => {
+  const ID = req.params.id;
+  People.getUserChores(ID)
+    .then(chores => {
+      res.status(200).json(chores);
+    })
+    .catch(error => {
+      res.status(500).json({ message: "Users chores could not be retrieved" });
+    });
+});
 
 
 module.exports = router;
