@@ -1,14 +1,19 @@
-require('dotenv').config()
-const server = require('./api/server');
+const express = require('express');
+const choreRouter = require('./chores/choreRouter');
 
-
-
-
-
-//Heroku can see the process.env.PORT, my comp will not so then it will run port 8000
 const port = process.env.PORT || 8000;
 
+const server = express();
 
 
+server.get('/',  (req, res) => {
+  res.send(`<h2>Let's write some middleware!</h2>`)
+});
+
+//custom middleware
+server.use(express.json())
+
+//routes
+server.use("/", choreRouter)
 
 server.listen(port, ()=> console.log(` server running on ${port} `))

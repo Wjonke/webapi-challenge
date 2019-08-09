@@ -50,7 +50,7 @@ const validatePerson = (req, res, next) => {
   next()
 }
 //////////////////ROUTES//////////////
-server.get('/', (req, res) => {
+router.get('/', (req, res) => {
   res.status(200).json({ message: 'hello from Node'})
 })
 //GET all chores
@@ -82,7 +82,7 @@ router.post("/chores/:id", validateChore, (req, res) => {
 
 
 //DELETE chore using its ID, return deleted chore
-router.delete("/chores/:id", validatechoreId, (req, res) => {
+router.delete("/chores/:id", validateChoreId, (req, res) => {
   const choreId = req.params.id;
   let selectedchore;
 
