@@ -55,7 +55,7 @@ const validatePerson = (req, res, next) => {
 //////////////////ROUTES//////////////
 
 server.get('/', (req, res) => {
-  res.status(200).json({ message: 'hello from Node, we are deployed'})
+  res.status(200).json( `<h2>We are Deployed</h2>` )
 })
 //GET all chores
 server.get("/chores", (req, res) => {
